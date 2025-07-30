@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     // Fetch initial message or chat history
-    axios.get("/api/chat")
+    axios.get("http://localhost:3000/api/chat")
       .then(res => setMessages(res.data))
       .catch(console.error);
   }, []);
@@ -31,7 +31,7 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await axios.post("/api/chat", {
+      const res = await axios.post("http://localhost:3000/api/chat", {
         text: input,
       });
       setMessages((prev) => [...prev, res.data]);

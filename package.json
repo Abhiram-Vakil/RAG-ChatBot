@@ -9,11 +9,11 @@
     "build": "pnpm --filter ./frontend build"
   },
   "dependencies": {
-    "@huggingface/inference": "^2.7.0",
-    "@langchain/community": "^0.2.19",
-    "chromadb": "^1.8.1",
+    "@huggingface/inference": "^4.6.1",
+    "@langchain/community": "^0.3.49",
+    "chromadb": "^3.0.10",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
+    "dotenv": "^17.2.1",
     "express": "^4.19.2",
     "serverless-http": "^3.2.0"
   }
