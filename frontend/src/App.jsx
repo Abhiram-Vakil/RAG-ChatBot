@@ -7,10 +7,13 @@ function App() {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
+  // Point to the correct API root (defaulting to serverless Netlify path)
+  const apiRoot = import.meta.env.VITE_API_URL || "/.netlify/functions/api";
+
   useEffect(() => {
-    // Fetch initial message or chat history
-    axios.get("http://localhost:3000/api/chat")
-      .then(res => setMessages(res.data))
+    axios
+      .get(`${apiRoot}/api/chat`)
+      .then((res) => setMessages(res.data))
       .catch(console.error);
   }, []);
 
@@ -31,13 +34,16 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:3000/api/chat", {
+      const res = await axios.post(`${apiRoot}/api/chat`, {
         text: input,
       });
       setMessages((prev) => [...prev, res.data]);
     } catch (error) {
       console.error("Error sending message:", error);
-      const errorMessage = { from: "bot", text: "Sorry, something went wrong." };
+      const errorMessage = {
+        from: "bot",
+        text: "Sorry, something went wrong.",
+      };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setLoading(false);
@@ -67,7 +73,13 @@ function App() {
               </div>
             </div>
           ))}
-          {loading && <div className="chat chat-start"><div className="chat-bubble chat-bubble-secondary"><span className="loading loading-dots loading-md"></span></div></div>}
+          {loading && (
+            <div className="chat chat-start">
+              <div className="chat-bubble chat-bubble-secondary">
+                <span className="loading loading-dots loading-md"></span>
+              </div>
+            </div>
+          )}
           <div ref={messagesEndRef} />
         </div>
         <div className="flex gap-2">
@@ -79,7 +91,11 @@ function App() {
             placeholder="Type your message..."
             disabled={loading}
           />
-          <button className="btn btn-primary" onClick={sendMessage}>
+          <button
+            className="btn btn-primary"
+            onClick={sendMessage}
+            disabled={loading}
+          >
             Send
           </button>
         </div>
