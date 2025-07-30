@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(`${apiRoot}/api/chat`)
+      .get(`${apiRoot}/chat`)
       .then((res) => setMessages(res.data))
       .catch(console.error);
   }, []);
