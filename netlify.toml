@@ -1,7 +1,7 @@
 [build]
   command = "pnpm install && pnpm build"
   publish = "frontend/dist"
-  functions = "." # Because api.js is at root
+  functions = "."
 
 [[redirects]]
   from = "/api/*"
