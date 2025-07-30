@@ -9,6 +9,7 @@
     "build": "pnpm --filter ./frontend build"
   },
   "dependencies": {
+    "serverless-http": "^3.2.0",
     "@chroma-core/default-embed": "^0.1.8",
     "@huggingface/inference": "^4.6.1",
     "@langchain/community": "^0.3.49",
