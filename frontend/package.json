@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chroma-core/default-embed": "^0.1.8",
     "@langchain/community": "^0.3.49",
     "@tailwindcss/vite": "^4.1.11",
     "axios": "^1.11.0",
+    "chromadb": "^3.0.10",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
