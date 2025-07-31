@@ -11,7 +11,7 @@ const __dirname = dirname(__filename);
 // Dynamically load the ESM Express handler
 exports.handler = async (event, context) => {
   const { handler } = await import(
-    path.resolve(__dirname, "../../backend/handler.js")
+    path.resolve(__dirname, "../../../backend/handler.js")
   );
   return handler(event, context);
 };
