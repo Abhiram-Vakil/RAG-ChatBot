@@ -5,7 +5,17 @@ import chatRoutes from "./routes/chatRoutes.js";
 
 const app = express();
 
-app.use(cors()); // Enable CORS for all routes
+const allowedOrigins = ["https://flourishing-sherbet-ef1c76.netlify.app"];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed from this origin: " + origin));
+    }
+  },
+})); // Enable CORS for all routes
 app.use(express.json());
 
 app.get("/", (req, res) => {
