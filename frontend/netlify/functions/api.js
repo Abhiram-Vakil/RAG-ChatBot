@@ -1,17 +1,10 @@
 // netlify/functions/api.js
 
-import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
+import path from 'path';
+import { __dirname } from '../../utils/esm-paths.js'; // no re-declaration
 
-// Fix ESM path resolution
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// Dynamically load the ESM Express handler
 export const handler = async (event, context) => {
-  const { handler } = await import(
-    path.resolve(__dirname, "../../../backend/handler.js")
-  );
+  const handlerPath = path.resolve(__dirname, '../../../backend/handler.js');
+  const { handler } = await import(handlerPath);
   return handler(event, context);
 };
