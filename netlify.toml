@@ -1,8 +1,7 @@
-
 [build]
   base = "frontend"
-  publish = "frontend/dist"
-  command = "pnpm install --prefix ../backend && pnpm install && pnpm run build"
+  publish = "dist"
+  command = "pnpm install --filter ../backend && pnpm install && pnpm run build"
 
 [functions]
   directory = "netlify/functions"
