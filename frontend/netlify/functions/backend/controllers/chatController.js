@@ -1,21 +1,15 @@
 import "dotenv/config";
 
 import { CloudClient } from "chromadb";
-import { HuggingFaceInferenceEmbeddings } from "@langchain/community/embeddings/hf";
 import { InferenceClient } from "@huggingface/inference";
  
 const client = new CloudClient();
 
 const hf = new InferenceClient(process.env.HUGGING_FACE_API_KEY);
 
-// Use the same embedding model as in the ingestion script
-const embeddings = new HuggingFaceInferenceEmbeddings({
-  apiKey: process.env.HUGGING_FACE_API_KEY,
-  model: "sentence-transformers/all-MiniLM-L6-v2",
-  endpoint: "https://api-inference.huggingface.co",
-});
-
 const COLLECTION_NAME = "RAG-DATA";
+// Use the same embedding model as in the ingestion script
+const EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2";
 
 export const getMessages = (req, res) => {
   // This endpoint can be used to fetch chat history, but for now, it's static.
@@ -37,7 +31,10 @@ export const sendMessage = async (req, res) => {
   try {
     // 1. Retrieve relevant context from ChromaDB
     const collection = await client.getOrCreateCollection({ name: COLLECTION_NAME });
-    const queryEmbedding = await embeddings.embedQuery(userInput);
+    const queryEmbedding = await hf.featureExtraction({
+      model: EMBEDDING_MODEL,
+      inputs: userInput,
+    });
 
     const results = await collection.query({
       queryEmbeddings: [queryEmbedding],

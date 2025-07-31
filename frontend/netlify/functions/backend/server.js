@@ -8,7 +8,7 @@ const app = express();
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/hel", (req, res) => {
   res.send("Hello World!");
 });
 
