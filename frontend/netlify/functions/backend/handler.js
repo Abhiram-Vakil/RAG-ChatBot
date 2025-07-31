@@ -4,4 +4,3 @@ import app from "./server.js";
 const handler = serverless(app);
 
 export { handler };
-export default handler; 

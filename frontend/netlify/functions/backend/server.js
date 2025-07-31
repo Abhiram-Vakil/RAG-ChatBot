@@ -8,10 +8,10 @@ const app = express();
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-app.get("/hel", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-
+console.log("chatRoutes is:", chatRoutes);
 app.use("/api/chat", chatRoutes);
 
 export default app;
