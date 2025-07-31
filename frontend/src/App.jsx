@@ -34,7 +34,7 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await axios.post(`${apiRoot}/chat`, {
+      const res = await axios.post(`${apiRoot}/api/chat`, {
         text: input,
       });
       setMessages((prev) => [...prev, res.data]);
