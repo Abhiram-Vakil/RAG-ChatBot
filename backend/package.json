@@ -3,9 +3,9 @@
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": " nodemon src/index.js",
+    "dev": " nodemon ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,7 +15,6 @@
   "dependencies": {
     "@chroma-core/default-embed": "^0.1.8",
     "@huggingface/inference": "^4.6.1",
-    "@langchain/community": "0.0.54",
     "axios": "^1.11.0",
     "chromadb": "^3.0.10",
     "cors": "^2.8.5",

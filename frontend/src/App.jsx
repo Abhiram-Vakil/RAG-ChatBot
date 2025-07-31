@@ -8,7 +8,7 @@ function App() {
   const messagesEndRef = useRef(null);
 
   // Point to the correct API root (defaulting to serverless Netlify path)
-  const apiRoot = import.meta.env.VITE_API_URL || "/.netlify/functions/api";
+  const apiRoot = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
   useEffect(() => {
     axios
