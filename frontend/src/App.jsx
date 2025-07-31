@@ -10,12 +10,12 @@ function App() {
   // Point to the correct API root (defaulting to serverless Netlify path)
   const apiRoot = import.meta.env.VITE_API_URL || "/.netlify/functions/api";
 
-  useEffect(() => {
-    axios
-      .get(`${apiRoot}/chat`)
-      .then((res) => setMessages(res.data))
-      .catch(console.error);
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${apiRoot}/chat`)
+  //     .then((res) => setMessages(res.data))
+  //     .catch(console.error);
+  // }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
