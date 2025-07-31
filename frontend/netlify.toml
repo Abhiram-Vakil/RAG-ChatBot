@@ -1,0 +1,12 @@
+# Netlify configuration file
+
+[build]
+  # This command will be run to build your site
+  command = "pnpm run build"
+  # The directory to publish, relative to the base directory
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
