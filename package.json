@@ -1,25 +1,15 @@
 {
-  "name": "chatbot-rag",
+  "name": "ChatBot",
   "version": "1.0.0",
-  "private": true,
-  "type": "module",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "pnpm --filter ./frontend dev",
-    "build": "pnpm --filter ./frontend build"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install:all": "pnpm install --filter ./frontend && pnpm install --filter ./backend",
+    "build": "pnpm --filter frontend run build"
   },
-  "dependencies": {
-    "serverless-http": "^3.2.0",
-    "@chroma-core/default-embed": "^0.1.8",
-    "@huggingface/inference": "^4.6.1",
-    "@langchain/community": "0.0.54",
-    "axios": "^1.11.0",
-    "chromadb": "^3.0.10",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^5.1.0",
-    "@tailwindcss/vite": "^4.1.11",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.4"
 }

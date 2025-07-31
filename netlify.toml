@@ -1,9 +1,13 @@
+
 [build]
-  command = "pnpm install && pnpm build"
+  base = "frontend"
   publish = "frontend/dist"
-  functions = "."
+  command = "pnpm install --prefix ../backend && pnpm install && pnpm run build"
+
+[functions]
+  directory = "netlify/functions"
 
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/api/:splat"
+  to = "/.netlify/functions/api"
   status = 200
