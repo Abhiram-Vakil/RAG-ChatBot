@@ -11,22 +11,27 @@ const PdfInput = ({ onFileSelect }) => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    if (file) {
-      if (file.type === 'application/pdf') {
-        setSelectedFile(file);
-        setError('');
-        onFileSelect?.(file);
-      } else {
-        setSelectedFile(null);
-        setError('Error: Please select a valid PDF file.');
-        onFileSelect?.(null);
-        event.target.value = null; // Clear the input
-      }
+    if (!file) {
+      setSelectedFile(null);
+      setError('');
+      onFileSelect?.(null);
+      return;
+    }
+
+    if (file.type === 'application/pdf') {
+      setSelectedFile(file);
+      setError('');
+      onFileSelect?.(file);
+    } else {
+      setSelectedFile(null);
+      setError('Error: Please select a valid PDF file.');
+      onFileSelect?.(null);
+      event.target.value = null; // Clear the input
     }
   };
 
   return (
-    <div className="h-lvh flex flex-col items-center  p-4 bg-base-200">
+    <div className=" flex flex-col items-center  p-4 bg-base-200">
       <div className="form-control w-full max-w-md bg-base-100 p-10 rounded-lg shadow-md flex flex-col items-center gap-5 mt-10">
       <label className="label">
         <span className="label-text">Upload your document</span>
@@ -47,4 +52,3 @@ const PdfInput = ({ onFileSelect }) => {
 };
 
 export default PdfInput;
-

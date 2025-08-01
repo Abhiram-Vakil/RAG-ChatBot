@@ -10,7 +10,7 @@ const ChatBot = () => {
   const messagesEndRef = useRef(null);
 
   // Point to the correct API root (defaulting to serverless Netlify path)
-  const apiRoot = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  const apiRoot = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
   useEffect(() => {
     axios
